@@ -1,17 +1,18 @@
 package com.skocur.netpaint.server;
 
 import com.skocur.netpaint.ShapesManager;
-import com.skocur.netpaint.shapes.Oval;
-import com.skocur.netpaint.shapes.Rectangle;
-import com.skocur.netpaint.shapes.Shape;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.LinkedList;
-import java.util.List;
 
+/**
+ *
+ */
 public class ServerPaintWindow extends Frame {
 
+    /**
+     * Sets basic features of NetPaint window such as size or title.
+     */
     public ServerPaintWindow() {
         setSize(700, 700);
         setTitle("NetPaint");
@@ -20,11 +21,21 @@ public class ServerPaintWindow extends Frame {
         setListeners();
     }
 
+    /**
+     * Overridden method delivered from Frame class responsible for displaying
+     * shapes from List that holds all Shapes drawn by user.
+     *
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         ShapesManager.shapes.forEach((shape) -> shape.draw(g));
     }
 
+    /**
+     * Method that set all necessary listeners responsible for processing
+     * various tasks.
+     */
     private void setListeners() {
         addWindowListener(new WindowAdapter() {
             @Override

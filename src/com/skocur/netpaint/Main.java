@@ -5,13 +5,25 @@ import com.skocur.netpaint.client.ClientPaintWindow;
 import com.skocur.netpaint.server.Server;
 import com.skocur.netpaint.server.ServerPaintWindow;
 
+/**
+ * Class that is entry point for NetPaint. NetPaint behaves
+ * differently depending on PaintType option (@see PaintType).
+ */
 public class Main {
 
     public static Server server = new Server();
-    static PaintType paintType = PaintType.SERVER;
+    static PaintType paintType = PaintType.CLIENT;
 
     private static ClientPaintWindow clientPaintWindow;
 
+    /**
+     * Method that runs different parts of NetPaint depending on PaintType
+     * option (@see PaintType).
+     * It displays window and sets up class responsible for background
+     * communication between Client and Server.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         switch (paintType) {
             case CLIENT:
@@ -27,12 +39,13 @@ public class Main {
         }
     }
 
-    private static Client.SocketDataListener socketDataListener = new Client.SocketDataListener() {
-        @Override
-        public void onReceive() {
+    /**
+     * Anonymous class responsible for invoking repaint() method from
+     * class that extends Frame.
+     */
+    private static Client.SocketDataListener socketDataListener = () -> {
             if (clientPaintWindow != null && paintType == PaintType.CLIENT) {
                 clientPaintWindow.repaint();
             }
-        }
     };
 }

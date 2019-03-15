@@ -7,6 +7,9 @@ import java.awt.event.*;
 
 public class ClientPaintWindow extends Frame {
 
+    /**
+     * Sets basic features of NetPaint window such as size or title.
+     */
     public ClientPaintWindow() {
         setSize(700, 700);
         setTitle("NetPaint");
@@ -15,11 +18,21 @@ public class ClientPaintWindow extends Frame {
         setListeners();
     }
 
+    /**
+     * Overridden method delivered from Frame class responsible for displaying
+     * shapes from List that holds all Shapes drawn by user.
+     *
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         ShapesManager.shapes.forEach((shape) -> shape.draw(g));
     }
 
+    /**
+     * Method that set all necessary listeners responsible for processing
+     * various tasks.
+     */
     private void setListeners() {
         addWindowListener(new WindowAdapter() {
             @Override
