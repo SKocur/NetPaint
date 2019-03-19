@@ -1,8 +1,9 @@
-package com.skocur.netpaint.shapes;
+package main.java.com.skocur.netpaint.shapes;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Oval implements Shape {
+public class Oval implements Shape, Serializable {
 
     int x, y;
 

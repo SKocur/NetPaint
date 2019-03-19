@@ -1,19 +1,16 @@
-package com.skocur.netpaint.server;
+package main.java.com.skocur.netpaint.client;
 
-import com.skocur.netpaint.ShapesManager;
+import main.java.com.skocur.netpaint.ShapesManager;
 
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- *
- */
-public class ServerPaintWindow extends Frame {
+public class ClientPaintWindow extends Frame {
 
     /**
      * Sets basic features of NetPaint window such as size or title.
      */
-    public ServerPaintWindow() {
+    public ClientPaintWindow() {
         setSize(700, 700);
         setTitle("NetPaint");
         setVisible(true);
@@ -46,24 +43,5 @@ public class ServerPaintWindow extends Frame {
             }
         });
 
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent mouseEvent) {
-                super.mouseClicked(mouseEvent);
-
-                ShapesManager.addShapeBasedOn(mouseEvent);
-
-                repaint();
-            }
-        });
-
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
-
-                ShapesManager.calculateShapeOption(e);
-            }
-        });
     }
 }

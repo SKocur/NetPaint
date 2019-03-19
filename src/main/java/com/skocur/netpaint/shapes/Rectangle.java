@@ -1,8 +1,9 @@
-package com.skocur.netpaint.shapes;
+package main.java.com.skocur.netpaint.shapes;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Rectangle implements Shape {
+public class Rectangle implements Shape, Serializable {
 
     int x, y;
 

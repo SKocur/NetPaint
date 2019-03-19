@@ -1,8 +1,8 @@
-package com.skocur.netpaint;
+package main.java.com.skocur.netpaint;
 
-import com.skocur.netpaint.shapes.Oval;
-import com.skocur.netpaint.shapes.Rectangle;
-import com.skocur.netpaint.shapes.Shape;
+import main.java.com.skocur.netpaint.shapes.Oval;
+import main.java.com.skocur.netpaint.shapes.Rectangle;
+import main.java.com.skocur.netpaint.shapes.Shape;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;

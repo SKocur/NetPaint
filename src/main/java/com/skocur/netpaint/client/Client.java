@@ -1,7 +1,7 @@
-package com.skocur.netpaint.client;
+package main.java.com.skocur.netpaint.client;
 
-import com.skocur.netpaint.ShapesManager;
-import com.skocur.netpaint.server.Server;
+import main.java.com.skocur.netpaint.ShapesManager;
+import main.java.com.skocur.netpaint.server.Server;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

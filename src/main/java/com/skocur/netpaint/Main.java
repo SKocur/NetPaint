@@ -1,9 +1,9 @@
-package com.skocur.netpaint;
+package main.java.com.skocur.netpaint;
 
-import com.skocur.netpaint.client.Client;
-import com.skocur.netpaint.client.ClientPaintWindow;
-import com.skocur.netpaint.server.Server;
-import com.skocur.netpaint.server.ServerPaintWindow;
+import main.java.com.skocur.netpaint.client.Client;
+import main.java.com.skocur.netpaint.client.ClientPaintWindow;
+import main.java.com.skocur.netpaint.server.Server;
+import main.java.com.skocur.netpaint.server.ServerPaintWindow;
 
 /**
  * Class that is entry point for NetPaint. NetPaint behaves
@@ -12,7 +12,7 @@ import com.skocur.netpaint.server.ServerPaintWindow;
 public class Main {
 
     public static Server server = new Server();
-    static PaintType paintType = PaintType.CLIENT;
+    static PaintType paintType = PaintType.SERVER;
 
     private static ClientPaintWindow clientPaintWindow;
 

@@ -1,4 +1,4 @@
-package com.skocur.netpaint.shapes;
+package main.java.com.skocur.netpaint.shapes;
 
 import java.awt.*;
 

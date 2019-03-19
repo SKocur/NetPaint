@@ -1,4 +1,4 @@
-package com.skocur.netpaint;
+package main.java.com.skocur.netpaint;
 
 /**
  * Simple ENUM that holds two values:
