@@ -26,7 +26,7 @@ public class ClientPaintWindow extends Frame {
      */
     @Override
     public void paint(Graphics g) {
-        ShapesManager.shapes.forEach((shape) -> shape.draw(g));
+        ShapesManager.shapes.forEach((shape) -> shape.draw(g, 1, 1));
     }
 
     /**

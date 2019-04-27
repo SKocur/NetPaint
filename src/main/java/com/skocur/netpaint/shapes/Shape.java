@@ -17,5 +17,13 @@ public interface Shape {
      *
      * @param g
      */
-    void draw(Graphics g);
+    void draw(Graphics g, double scaleX, double scaleY);
+
+    void setEndX(int x);
+    void setEndY(int y);
+
+    void setColor(int color);
+
+    int getX();
+    int getY();
 }

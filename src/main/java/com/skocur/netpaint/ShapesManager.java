@@ -35,7 +35,11 @@ public class ShapesManager {
      */
     public static void addShapeBasedOn(MouseEvent mouseEvent) {
         if (shapeOption == 0) {
-            shapes.add(new Oval(mouseEvent.getX(), mouseEvent.getY()));
+            Oval oval = new Oval(mouseEvent.getX(), mouseEvent.getY());
+            oval.setEndX(oval.getX() + 100);
+            oval.setEndY(oval.getY() + 100);
+
+            shapes.add(oval);
         } else if (shapeOption == 1) {
             shapes.add(new Rectangle(mouseEvent.getX(), mouseEvent.getY()));
         }

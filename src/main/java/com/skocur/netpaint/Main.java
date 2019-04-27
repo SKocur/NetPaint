@@ -12,7 +12,7 @@ import main.java.com.skocur.netpaint.server.ServerPaintWindow;
 public class Main {
 
     public static Server server = new Server();
-    static PaintType paintType = PaintType.SERVER;
+    private static PaintType paintType = PaintType.SERVER;
 
     private static ClientPaintWindow clientPaintWindow;
 

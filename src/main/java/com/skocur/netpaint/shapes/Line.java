@@ -1,13 +1,12 @@
 package main.java.com.skocur.netpaint.shapes;
 
 import java.awt.*;
-import java.io.Serializable;
 
-public class Oval implements Shape, Serializable {
+public class Line implements Shape {
 
     private int x, y, endX, endY, color;
 
-    public Oval(int x, int y) {
+    public Line(int x, int y) {
         this.x = x;
         this.y = y;
         color = 31230;
@@ -16,7 +15,7 @@ public class Oval implements Shape, Serializable {
     @Override
     public void draw(Graphics g, double scaleX, double scaleY) {
         g.setColor(new Color(color));
-        g.drawOval((int) (x * scaleX), (int) (y * scaleY), (int) (endX * scaleX), (int) (endY * scaleY));
+        g.drawLine((int)(x * scaleX), (int)(y * scaleY), (int)(endX * scaleX), (int)(endY * scaleY));
     }
 
     @Override
@@ -46,7 +45,7 @@ public class Oval implements Shape, Serializable {
 
     @Override
     public String toString() {
-        return "OVAL " + x
+        return "LINE " + x
                 + " " + y
                 + " " + endX
                 + " " + endY

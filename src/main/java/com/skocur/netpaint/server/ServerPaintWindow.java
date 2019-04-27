@@ -1,24 +1,44 @@
 package main.java.com.skocur.netpaint.server;
 
+import main.java.com.skocur.netpaint.FileDisplayer;
 import main.java.com.skocur.netpaint.ShapesManager;
+import main.java.com.skocur.netpaint.ShapesSpawner;
+import main.java.com.skocur.netpaint.shapes.Shape;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedList;
 
 /**
  *
  */
 public class ServerPaintWindow extends Frame {
 
+    private final boolean IS_SPAWNER_ACTIVATED = false;
+
+    public static final int DIMENSION_XY = 500;
+    private double scaleW = 1;
+    private double scaleH = 1;
+
     /**
      * Sets basic features of NetPaint window such as size or title.
      */
     public ServerPaintWindow() {
-        setSize(700, 700);
+        setMinimumSize(new Dimension(DIMENSION_XY, DIMENSION_XY));
+        setMaximumSize(new Dimension(700, 700));
+        setPreferredSize(new Dimension(600, 600));
         setTitle("NetPaint");
         setVisible(true);
 
         setListeners();
+
+        if (IS_SPAWNER_ACTIVATED) {
+            new ShapesSpawner(() ->
+                    repaint()
+            ).start();
+
+            new Thread(new FileDisplayer()).start();
+        }
     }
 
     /**
@@ -29,7 +49,9 @@ public class ServerPaintWindow extends Frame {
      */
     @Override
     public void paint(Graphics g) {
-        ShapesManager.shapes.forEach((shape) -> shape.draw(g));
+        for (Shape shape : new LinkedList<>(ShapesManager.shapes)) {
+            shape.draw(g, scaleW, scaleH);
+        }
     }
 
     /**
@@ -46,16 +68,18 @@ public class ServerPaintWindow extends Frame {
             }
         });
 
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent mouseEvent) {
-                super.mouseClicked(mouseEvent);
+        if (!IS_SPAWNER_ACTIVATED) {
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent mouseEvent) {
+                    super.mouseClicked(mouseEvent);
 
-                ShapesManager.addShapeBasedOn(mouseEvent);
+                    ShapesManager.addShapeBasedOn(mouseEvent);
 
-                repaint();
-            }
-        });
+                    repaint();
+                }
+            });
+        }
 
         addKeyListener(new KeyAdapter() {
             @Override
@@ -63,6 +87,22 @@ public class ServerPaintWindow extends Frame {
                 super.keyPressed(e);
 
                 ShapesManager.calculateShapeOption(e);
+            }
+        });
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                super.componentResized(e);
+
+                Rectangle r = getBounds();
+                int h = r.height;
+                int w = r.width;
+
+                scaleW = w > 0 ?  (double) w / DIMENSION_XY : 1;
+                scaleH = w > 0 ? (double) h / DIMENSION_XY : 1;
+
+                repaint();
             }
         });
     }
